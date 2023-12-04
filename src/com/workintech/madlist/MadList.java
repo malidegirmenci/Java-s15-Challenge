@@ -1,6 +1,7 @@
 package com.workintech.madlist;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MadList<T> {
 
@@ -64,6 +65,21 @@ public class MadList<T> {
             }
         }
         return -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MadList<?> madList = (MadList<?>) o;
+        return size == madList.size && Arrays.equals(arr, madList.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(arr);
+        return result;
     }
 
     @Override

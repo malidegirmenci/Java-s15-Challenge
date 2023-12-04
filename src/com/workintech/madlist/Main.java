@@ -1,20 +1,30 @@
 package com.workintech.madlist;
 
-import com.workintech.madlist.MadList;
+
 
 public class Main {
     public static void main(String[] args) {
        MadList<Object> list = new MadList<>();
-       list.add("veli");
+       String[] names = new String[]{"Kazım", "Efendi"};
+       list.add("ali");
        list.add(5);
        list.add(5);
        list.add(12);
        list.add("ayşe");
-       list.add("veli");
-       list.add(new String[]{"mahmut", "kerim"});
+       list.add("ali");
+       list.add(names);
+       list.add(names);
        list.add(new Integer[]{3,5});
        list.add(new Integer[]{3,5});
+
        System.out.println(list);
-       System.out.println(list.indexOf("ayşe"));
+       System.out.println("Is arr empty?:  " + list.isEmpty());
+       System.out.println("Size of arr: " + list.size());
+       System.out.println("Is \"ayşe\" present in the array? : " + list.contains("ayşe"));
+       System.out.println("Index of \"ayşe\": " + list.indexOf("ayşe"));
+       System.out.println("Value of index: " + list.get(3));
+       list.clear();
+       System.out.println("Cleaned arr");
+       System.out.println(list);
     }
 }
