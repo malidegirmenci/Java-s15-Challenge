@@ -10,8 +10,8 @@ Proje sayımız ilerledikçe proje yönetimimizi kolaylaştırmak adına projele
 ### Hedeflerimiz:
 
 ### Library System
+![](S15Challange.png)
 
- * ![](challenge1.png)
  * Bir kütüphane sistemi modelimiz mevcut.
  * Bu modeli programlamak istiyoruz. Nesne Tabanlı bir uygulama geliştirmek zorundayız.
  * Tamamen özgür bir şekilde istediğiniz türde bir dizayn yapabilirsiniz.
