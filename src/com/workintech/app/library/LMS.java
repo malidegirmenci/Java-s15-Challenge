@@ -1,5 +1,6 @@
 package com.workintech.app.library;
 
+import com.workintech.app.library.Enums.Status;
 import com.workintech.app.library.model.Books.*;
 import com.workintech.app.library.model.Library.*;
 import com.workintech.app.library.model.Person.*;
@@ -110,15 +111,15 @@ public class LMS {
         library.newBook(geometri);
         library.newBook(hayvanCiftligi);
         library.newBook(nineteenEightyFour);
-        library.showBooks();
+        //library.showBooks();
 
 
         /* LIBRARIAN INSTANCE */
         Librarian librarian = new Librarian("Server Server", "1231231", library);
 
         /* AUTHOR INSTANCE */
-        Author oguzAtay = new Author("Oğuz Atay");
-        Author georgeOrwell = new Author("George Orwell");
+        Person oguzAtay = new Author("Oğuz Atay");
+        Person georgeOrwell = new Author("George Orwell");
 
         /* AUTHOR'S BOOKS ADDED */
         oguzAtay.addBook(tutunamayanlar);
@@ -142,24 +143,38 @@ public class LMS {
 
         /* LIBRARY METHODS */
         System.out.println("**************************************");
-        library.showMembers();
+        //library.showMembers();
         //library.showBooks();
 
 
         /* LIBRARIAN METHODS */
         System.out.println("**************************************");
-        librarian.searchBook("Geometri");
-        librarian.issueBook(mali,geometri,"01.12.2023");
-        librarian.issueBook(mali,hayvanCiftligi,"21.04.2023");
+
+
 
         /* READERS METHODS */
         System.out.println("**************************************");
-        mali.showBooks();
 
+        mali.showBooks();
+        librarian.issueBook(mali,geometri,"10.12.2023");
+        librarian.issueBook(mali,hayvanCiftligi,"15.11.2023");
+        librarian.issueBook(mali,imhotep,"29.11.2023");
+        librarian.issueBook(mali,caliKusu,"06.06.2023");
+        librarian.issueBook(mali,tutunamayanlar,"21.10.2023");
+        librarian.issueBook(mali,nineteenEightyFour,"21.10.2023");
+        librarian.checkDamaged(mali,geometri,Status.DAMAGED);
+        System.out.println("**************************************");
+        mali.showBooks();
+        librarian.createBill(mali);
+        librarian.showBill(mali);
+        librarian.returnBook(mali,geometri);
         System.out.println("**************************************");
         library.showBooks();
+        //mali.showBooks();
+        //librarian.createBill(mali);
+        //librarian.showBill(mali);
+        mali.showPerson();
+        georgeOrwell.showPerson();
 
-        System.out.println("**************************************");
-        georgeOrwell.showBooks();
     }
 }

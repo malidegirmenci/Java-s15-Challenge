@@ -24,15 +24,16 @@ public abstract class Reader extends Person {
         this.address = address;
         this.phoneNo = phoneNo;
         this.maxBookLimit = 5;
+
     }
     public Reader getMember(){
         return this;
     }
     public void incBookIssued(){
-        maxBookLimit -= 1;
+        setMaxBookLimit(getMaxBookLimit()+1);
     }
     public void decBookIssued(){
-        maxBookLimit += 1;
+        setMaxBookLimit(getMaxBookLimit()-1);
     }
 
     public UUID getID() {
@@ -81,9 +82,28 @@ public abstract class Reader extends Person {
 
     @Override
     public void addBook(Book book){
-
         getBooks().put(book.getID(),book);
-        book.update_status(Status.BORROWED);
-        book.setOwner(this);
+        decBookIssued();
+    }
+    @Override
+    public void removeBook(Book book){
+        getBooks().remove(book.getID());
+        incBookIssued();
+    }
+
+    @Override
+    public void showPerson() {
+        System.out.println("-->"+getName()+"<--");
+        System.out.println("Role: "+getRole());
+        System.out.println("WhatAmI: "+getType());
+        System.out.println("Date of Membership: "+getDateOfMembership());
+        System.out.println("My Address: "+getAddress());
+        System.out.println("My Phone: " +getPhoneNo());
+        System.out.println("My Book Limit: "+ getMaxBookLimit());
+        System.out.println("--> Books <--");
+        int i = 1;
+        for(Book book : getBooks().values()){
+            System.out.println(i++ +". "+book.getName());
+        }
     }
 }
