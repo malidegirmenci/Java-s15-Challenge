@@ -2,13 +2,14 @@ package com.workintech.app.library.model.Person;
 
 import com.workintech.app.library.Enums.Roles;
 import com.workintech.app.library.Enums.Status;
+import com.workintech.app.library.Interfaces.Borrowable;
 import com.workintech.app.library.model.Books.Book;
 
 
 import java.util.UUID;
 
 
-public abstract class Reader extends Person {
+public abstract class Reader extends Person implements Borrowable {
     private final UUID ID;
     private String type;
     private String dateOfMembership;
@@ -81,7 +82,12 @@ public abstract class Reader extends Person {
     }
 
     @Override
-    public void addBook(Book book){
+    public void addBook(Book book) {
+        System.out.println("Readers can not add a book");
+    }
+
+    @Override
+    public void borrowBook(Book book){
         getBooks().put(book.getID(),book);
         decBookIssued();
     }
