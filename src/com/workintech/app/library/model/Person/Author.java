@@ -3,11 +3,8 @@ package com.workintech.app.library.model.Person;
 import com.workintech.app.library.Enums.Roles;
 import com.workintech.app.library.model.Books.Book;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
-public class Author extends Person{
+public class Author extends Person {
     public Author(String name) {
         super(name,Roles.AUTHOR);
 
