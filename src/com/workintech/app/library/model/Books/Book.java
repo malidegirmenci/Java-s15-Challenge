@@ -1,10 +1,7 @@
 package com.workintech.app.library.model.Books;
 
-
 import com.workintech.app.library.Enums.Status;
-
 import com.workintech.app.library.model.Person.Person;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -126,7 +123,7 @@ public abstract class Book {
         this.owner = owner;
     }
 
-    public void update_status(Status status) {
+    public void updateStatus(Status status) {
         setStatus(status);
     }
 
@@ -137,6 +134,7 @@ public abstract class Book {
                         "\nRelease Year: " + getReleaseYear() +
                         "\nPages: " + getPages() +
                         "\nSummary: " + getSummary() +
+                        "\nPrice: " + getPrice() + "₺" +
                         "\nStatus: " + getStatus()
         );
     }
