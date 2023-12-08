@@ -11,7 +11,7 @@ public abstract class Reader extends Person implements Borrowable {
     private final UUID ID;
     private String type;
     private String dateOfMembership;
-    private int maxBookLimit;
+    private final int maxBookLimit;
     private int noBooksIssued;
     private String address;
     private String phoneNo;
@@ -59,10 +59,6 @@ public abstract class Reader extends Person implements Borrowable {
         return maxBookLimit;
     }
 
-    public void setMaxBookLimit(int maxBookLimit) {
-        this.maxBookLimit = maxBookLimit;
-    }
-
     public int getNoBooksIssued() {
         return noBooksIssued;
     }
@@ -107,13 +103,13 @@ public abstract class Reader extends Person implements Borrowable {
     @Override
     public void showPerson() {
         System.out.println("-->" + getName() + "<--" +
-        "\nRole: " + getRole() +
-        "\nType: " + getType() +
-        "\nDate of Membership: " + getDateOfMembership() +
-        "\nMy Address: " + getAddress() +
-        "\nMy Phone: " + getPhoneNo() +
-        "\nMy Issued Book Number: " + getNoBooksIssued() +
-        "\n--> Books <--");
+                "\nRole: " + getRole() +
+                "\nType: " + getType() +
+                "\nDate of Membership: " + getDateOfMembership() +
+                "\nMy Address: " + getAddress() +
+                "\nMy Phone: " + getPhoneNo() +
+                "\nMy Issued Book Number: " + getNoBooksIssued() +
+                "\n--> Books <--");
         int i = 1;
         for (Book book : getBooks().values()) {
             System.out.println(i++ + ". " + book.getName() + " --> Due Date: " + book.getFinalDeliveryDate().getMonth() + " " + book.getFinalDeliveryDate().getDayOfMonth());
