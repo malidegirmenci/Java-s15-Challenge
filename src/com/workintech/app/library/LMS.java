@@ -100,9 +100,11 @@ public class LMS {
 
 
         /* LIBRARY INSTANCE*/
+        System.out.println("**********************************************");
         Library library = new Library();
 
         /* ADDED NEW BOOK  */
+        System.out.println("**********************************************");
         library.newBook(nutuk);
         library.newBook(sekerPortakali);
         library.newBook(popSciTR);
@@ -116,11 +118,13 @@ public class LMS {
         library.showBooks();
 
         /* LIBRARIAN INSTANCE */
+        System.out.println("**********************************************");
         Librarian librarian = new Librarian("Server Server", "1231231", library);
 
 
 
         /* AUTHOR INSTANCE */
+        System.out.println("**********************************************");
         Person ataturk = new Author("Mustafa Kemal Atatürk");
         Person oguzAtay = new Author("Oğuz Atay");
         Person georgeOrwell = new Author("George Orwell");
@@ -131,6 +135,7 @@ public class LMS {
         Person doganBurdaDergi = new Author("Dogan Burda Dergi");
 
         /* AUTHOR'S BOOKS ADDED */
+        System.out.println("**********************************************");
         ataturk.addBook(nutuk);
         ataturk.addBook(geometri);
         oguzAtay.addBook(tutunamayanlar);
@@ -144,40 +149,61 @@ public class LMS {
         doganBurdaDergi.addBook(popSciTR);
 
         /* READER INSTANCES */
+        System.out.println("**********************************************");
         Reader mali = new Student("Mehmet Ali Değirmenci", "10.10.2020", "Adana", "05465214321");
         Reader ramazan = new Faculty("Ramazan Öztürk", "12.10.2019", "Aydın", "05425214321");
         Reader hasan = new Faculty("Hasan Eker", "03.05.2016", "Aydın", "05325214321");
         Reader fatih = new Student("Fatih Kot","10.07.2023","Trabzon","05052134651");
-        Reader mali2 = new Student("Mehmet Ali Değirmenci", "10.05.2021", "Adana", "05465214321");
 
         /* READERS REGISTERED TO LIBRARY */
+        System.out.println("**********************************************");
         library.registerReader(hasan);
         library.registerReader(ramazan);
         library.registerReader(mali);
         library.registerReader(fatih);
-        library.registerReader(mali2);
 
+
+        /* ISSUE BOOK */
+        System.out.println("**********************************************");
         librarian.issueBook(mali,nutuk,"01.11.2023");
         librarian.issueBook(fatih,popSciTR,"05.12.2023");
         librarian.issueBook(fatih,imhotep,"02.12.2023");
         librarian.issueBook(ramazan,nineteenEightyFour,"05.11.2023");
         librarian.issueBook(hasan,hayvanCiftligi,"12.09.2023");
 
-
+        /* CREATE BILL */
+        System.out.println("**********************************************");
         librarian.createBill(mali);
         librarian.createBill(ramazan);
         librarian.createBill(fatih);
+        librarian.createBill(hasan);
 
+        /* SHOW BILL */
+        System.out.println("**********************************************");
         librarian.showBill(fatih);
+        librarian.showBill(mali);
 
-
+        /*SHOW BOOK*/
+        System.out.println("**********************************************");
         library.showBook(imhotep);
-        mali.showPerson();
-        System.out.println("********************************");
+
+        /*SHOW BOOKS*/
+        System.out.println("**********************************************");
         library.showBooks();
-        library.showBills();
         library.showBooks("Novel");
+
+        /*SHOW BILLS*/
+        library.showBills();
+
+        /*SHOW READERS*/
         library.showReaders();
+
+        /*RETURN BOOK*/
+        librarian.returnBook(mali,nutuk);
+
+
+
+
 
     }
 }
