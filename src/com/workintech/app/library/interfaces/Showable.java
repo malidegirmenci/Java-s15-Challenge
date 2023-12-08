@@ -1,4 +1,4 @@
-package com.workintech.app.library.Interfaces;
+package com.workintech.app.library.interfaces;
 
 import com.workintech.app.library.model.Books.Book;
 import com.workintech.app.library.model.Person.Reader;
