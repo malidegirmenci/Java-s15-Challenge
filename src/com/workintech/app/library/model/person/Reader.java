@@ -1,8 +1,8 @@
-package com.workintech.app.library.model.Person;
+package com.workintech.app.library.model.person;
 
 import com.workintech.app.library.enums.Roles;
 import com.workintech.app.library.interfaces.Borrowable;
-import com.workintech.app.library.model.Books.Book;
+import com.workintech.app.library.model.books.Book;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;

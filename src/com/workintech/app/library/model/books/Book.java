@@ -1,7 +1,7 @@
-package com.workintech.app.library.model.Books;
+package com.workintech.app.library.model.books;
 
 import com.workintech.app.library.enums.Status;
-import com.workintech.app.library.model.Person.Person;
+import com.workintech.app.library.model.person.Person;
 
 import java.text.Collator;
 import java.time.LocalDate;

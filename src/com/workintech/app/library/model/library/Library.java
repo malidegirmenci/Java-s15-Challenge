@@ -1,10 +1,10 @@
-package com.workintech.app.library.model.Library;
+package com.workintech.app.library.model.library;
 
 import com.workintech.app.library.enums.Status;
 import com.workintech.app.library.interfaces.Removable;
 import com.workintech.app.library.interfaces.Showable;
-import com.workintech.app.library.model.Books.Book;
-import com.workintech.app.library.model.Person.Reader;
+import com.workintech.app.library.model.books.Book;
+import com.workintech.app.library.model.person.Reader;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

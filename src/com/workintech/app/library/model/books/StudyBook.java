@@ -1,4 +1,4 @@
-package com.workintech.app.library.model.Books;
+package com.workintech.app.library.model.books;
 
 public class StudyBook extends Book{
     public StudyBook(String author, String name, double price, String releaseYear, int pages, String summary) {

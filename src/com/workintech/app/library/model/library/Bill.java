@@ -1,4 +1,4 @@
-package com.workintech.app.library.model.Library;
+package com.workintech.app.library.model.library;
 
 import java.text.Collator;
 import java.time.LocalDate;

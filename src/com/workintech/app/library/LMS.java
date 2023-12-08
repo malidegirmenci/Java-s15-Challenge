@@ -1,13 +1,14 @@
 package com.workintech.app.library;
 
-import com.workintech.app.library.Enums.Status;
-import com.workintech.app.library.model.Books.*;
-import com.workintech.app.library.model.Library.*;
-import com.workintech.app.library.model.Person.*;
+import com.workintech.app.library.enums.Members;
+import com.workintech.app.library.model.books.*;
+import com.workintech.app.library.model.library.*;
+import com.workintech.app.library.model.person.*;
+
 public class LMS {
     public static void main(String[] args) {
         /* BOOK INSTANCES */
-        Book nutuk = new StudyBooks(
+        Book nutuk = new StudyBook(
                 "Mustafa Kemal Atatürk",
                 "Nutuk",
                 1923,
@@ -15,7 +16,7 @@ public class LMS {
                 900,
                 "Nutuk, milli mücadele dönemini ve sonrasında yaşanan süreçleri ele alan bir eserdir. Milli mücadele ardından Türkiye Büyük Millet Meclisi'nin kuruluş dönemi ve Türkiye'nin kuruluş sürecini ele alan bir kitaptır."
         );
-        Book geometri = new StudyBooks(
+        Book geometri = new StudyBook(
                 "Mustafa Kemal Atatürk",
                 "Geometri",
                 48,
@@ -39,7 +40,7 @@ public class LMS {
                 409,
                 "Romanda, İstanbul köklü bir ailenin kızı olan çocuk ruhlu Feride'nin çok sevdiği nişanlısı tarafından ihanete uğramasıyla kendini öğretmenlik mesleğine adaması ve hayatını kazanabilmek için Anadolu'da şehir şehir dolaşması anlatılır."
         );
-        Book popSciTR = new Magazines(
+        Book popSciTR = new Magazine(
                 "Dogan Burda Dergi",
                 "Popular Science",
                 12,
@@ -47,7 +48,7 @@ public class LMS {
                 108,
                 "1872 yılında Amerika'da yayımlanmaya başlayan popüler bilim dergisidir. Genel okuyucuya hitap eden dergi, bilim ve teknoloji konularını irdeler. Popular Science, 30'dan fazla dile çevrilmekte ve 45 ülkede yayınlanmaktadır."
         );
-        Book thomasCalculus = new StudyBooks(
+        Book thomasCalculus = new StudyBook(
                 "Frank R. Giordano",
                 "Thomas Calculus",
                 1156,
@@ -71,7 +72,7 @@ public class LMS {
                 479,
                 "Tutunamayanlar, Türk edebiyatının en önemli eserlerinden biridir. Berna Moran, Oğuz Atay'ın bu ilk romanını \"hem söyledikleri hem de söyleyiş biçimiyle bir başkaldırı\" olarak niteler. Moran'a göre \"Oğuz Atay'ın mizah gücü ve duyarlığı ve kullandığı teknik incelikler, Tutunamayanlar'ı büyük bir yeteneğin ürünü yapmış, eserdeki bu yetkinlik Türk romanını çağdaş roman anlayışıyla aynı hizaya getirmiş ve ona çok şey kazandırmıştır."
         );
-        Book imhotep = new Magazines(
+        Book imhotep = new Magazine(
                 "Adli Tıp Uzmanları Derneği",
                 "Imhotep",
                 45,
@@ -111,29 +112,40 @@ public class LMS {
         library.newBook(geometri);
         library.newBook(hayvanCiftligi);
         library.newBook(nineteenEightyFour);
-        //library.showBooks();
-
+        library.showBooks();
 
         /* LIBRARIAN INSTANCE */
         Librarian librarian = new Librarian("Server Server", "1231231", library);
 
         /* AUTHOR INSTANCE */
+        Person ataturk = new Author("Mustafa Kemal Atatürk");
         Person oguzAtay = new Author("Oğuz Atay");
         Person georgeOrwell = new Author("George Orwell");
+        Person atud = new Author("Adli Tıp Uzmanları Derneği");
+        Person resatNuriGuntekin = new Author("Reşat Nuri Güntekin");
+        Person frGiardino = new Author("Frank R. Giordano");
+        Person vasconcelos = new Author("Jose Mauro De Vasconcelos");
+        Person doganBurdaDergi = new Author("Dogan Burda Dergi");
 
         /* AUTHOR'S BOOKS ADDED */
+        ataturk.addBook(nutuk);
+        ataturk.addBook(geometri);
         oguzAtay.addBook(tutunamayanlar);
         oguzAtay.addBook(tehlikeOyunlar);
-        oguzAtay.addBook(imhotep); //
-
         georgeOrwell.addBook(nineteenEightyFour);
         georgeOrwell.addBook(hayvanCiftligi);
+        atud.addBook(imhotep);
+        resatNuriGuntekin.addBook(caliKusu);
+        frGiardino.addBook(thomasCalculus);
+        vasconcelos.addBook(sekerPortakali);
+        doganBurdaDergi.addBook(popSciTR);
 
         /* READER INSTANCES */
-        Reader mali = new Student("Mehmet Ali Değirmenci", "10-20-20", "Adana", "05465214321");
-        Reader ramazan = new Faculty("Ramazan Öztürk", "12-10-19", "Aydın", "05425214321");
-        Reader hasan = new Faculty("Hasan Eker", "12-10-19", "Aydın", "05325214321");
-        Reader fatih = new Student("Fatih Kot","10.12.2021","Trabzon","05052134651");
+        Reader mali = new Student("Mehmet Ali Değirmenci", "10.10.2020", "Adana", "05465214321");
+        Reader ramazan = new Faculty("Ramazan Öztürk", "12.10.2019", "Aydın", "05425214321");
+        Reader hasan = new Faculty("Hasan Eker", "03.05.2016", "Aydın", "05325214321");
+        Reader fatih = new Student("Fatih Kot","10.07.2023","Trabzon","05052134651");
+
 
         /* READERS REGISTERED TO LIBRARY */
         library.registerReader(hasan);
@@ -141,40 +153,25 @@ public class LMS {
         library.registerReader(mali);
         library.registerReader(fatih);
 
-        /* LIBRARY METHODS */
-        System.out.println("**************************************");
-        //library.showMembers();
-        //library.showBooks();
+        librarian.issueBook(mali,nutuk,"01.11.2023");
+        librarian.issueBook(fatih,popSciTR,"05.12.2023");
+        librarian.issueBook(fatih,imhotep,"02.12.2023");
+        librarian.issueBook(ramazan,nineteenEightyFour,"05.11.2023");
+        librarian.issueBook(hasan,hayvanCiftligi,"12.09.2023");
 
 
-        /* LIBRARIAN METHODS */
-        System.out.println("**************************************");
-
-
-
-        /* READERS METHODS */
-        System.out.println("**************************************");
-
-        mali.showBooks();
-        librarian.issueBook(mali,geometri,"10.12.2023");
-        librarian.issueBook(mali,hayvanCiftligi,"15.11.2023");
-        librarian.issueBook(mali,imhotep,"29.11.2023");
-        librarian.issueBook(mali,caliKusu,"06.06.2023");
-        librarian.issueBook(mali,tutunamayanlar,"21.10.2023");
-        librarian.issueBook(mali,nineteenEightyFour,"21.10.2023");
-        librarian.checkDamaged(mali,geometri,Status.DAMAGED);
-        System.out.println("**************************************");
-        mali.showBooks();
         librarian.createBill(mali);
-        librarian.showBill(mali);
-        librarian.returnBook(mali,geometri);
-        System.out.println("**************************************");
-        library.showBooks();
-        //mali.showBooks();
-        //librarian.createBill(mali);
-        //librarian.showBill(mali);
-        mali.showPerson();
-        georgeOrwell.showPerson();
+        librarian.createBill(ramazan);
+        librarian.createBill(fatih);
 
+        librarian.showBill(fatih);
+
+
+        library.showBook(imhotep);
+        mali.showPerson();
+        librarian.editReader(mali,"Mahmut Ali","11.11.2011","Bursa","05123123", Members.STUDENT.name());
+        System.out.println("********************************");
+        library.showBooks();
+        library.showBills();
     }
 }

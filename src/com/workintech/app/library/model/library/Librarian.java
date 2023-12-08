@@ -1,11 +1,9 @@
-package com.workintech.app.library.model.Library;
+package com.workintech.app.library.model.library;
 
 import com.workintech.app.library.enums.Status;
 import com.workintech.app.library.interfaces.Editable;
-import com.workintech.app.library.model.Books.Book;
-import com.workintech.app.library.model.Library.Bill;
-import com.workintech.app.library.model.Library.Library;
-import com.workintech.app.library.model.Person.Reader;
+import com.workintech.app.library.model.books.Book;
+import com.workintech.app.library.model.person.Reader;
 import com.workintech.app.library.utils.Helper;
 import org.jetbrains.annotations.NotNull;
 
