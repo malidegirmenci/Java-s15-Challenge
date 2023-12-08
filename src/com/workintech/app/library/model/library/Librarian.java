@@ -13,11 +13,11 @@ import java.util.UUID;
 
 public class Librarian implements Editable {
     private final String password;
-    private String name;
+    private String username;
     private final Library library;
 
     public Librarian(String name, String password, Library library) {
-        this.name = name;
+        this.username = name;
         this.password = password;
         this.library = library;
     }
