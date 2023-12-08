@@ -1,40 +1,38 @@
 package com.workintech.app.library.model.Person;
 
-import com.workintech.app.library.Enums.Roles;
-import com.workintech.app.library.Enums.Status;
-import com.workintech.app.library.Interfaces.Borrowable;
+import com.workintech.app.library.enums.Roles;
+import com.workintech.app.library.interfaces.Borrowable;
 import com.workintech.app.library.model.Books.Book;
-
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
-
 
 public abstract class Reader extends Person implements Borrowable {
     private final UUID ID;
     private String type;
     private String dateOfMembership;
     private int maxBookLimit;
+    private int noBooksIssued;
     private String address;
     private String phoneNo;
 
     public Reader(String name, String dateOfMembership, String address, String phoneNo) {
         super(name, Roles.READER);
         this.ID = UUID.randomUUID();
-        this.type = getClass().getName();
+        this.type = getClass().getSimpleName();
         this.dateOfMembership = dateOfMembership;
         this.address = address;
         this.phoneNo = phoneNo;
         this.maxBookLimit = 5;
+        this.noBooksIssued = 0;
+    }
 
+    public void incBookIssued() {
+        setNoBooksIssued(getNoBooksIssued() + 1);
     }
-    public Reader getMember(){
-        return this;
-    }
-    public void incBookIssued(){
-        setMaxBookLimit(getMaxBookLimit()+1);
-    }
-    public void decBookIssued(){
-        setMaxBookLimit(getMaxBookLimit()-1);
+
+    public void decBookIssued() {
+        setNoBooksIssued(getNoBooksIssued() - 1);
     }
 
     public UUID getID() {
@@ -65,6 +63,14 @@ public abstract class Reader extends Person implements Borrowable {
         this.maxBookLimit = maxBookLimit;
     }
 
+    public int getNoBooksIssued() {
+        return noBooksIssued;
+    }
+
+    public void setNoBooksIssued(int noBooksIssued) {
+        this.noBooksIssued = noBooksIssued;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -87,29 +93,30 @@ public abstract class Reader extends Person implements Borrowable {
     }
 
     @Override
-    public void borrowBook(Book book){
-        getBooks().put(book.getID(),book);
+    public void borrowBook(Book book) {
+        getBooks().put(book.getID(), book);
         decBookIssued();
     }
+
     @Override
-    public void removeBook(Book book){
+    public void removeBook(@NotNull Book book) {
         getBooks().remove(book.getID());
         incBookIssued();
     }
 
     @Override
     public void showPerson() {
-        System.out.println("-->"+getName()+"<--");
-        System.out.println("Role: "+getRole());
-        System.out.println("WhatAmI: "+getType());
-        System.out.println("Date of Membership: "+getDateOfMembership());
-        System.out.println("My Address: "+getAddress());
-        System.out.println("My Phone: " +getPhoneNo());
-        System.out.println("My Book Limit: "+ getMaxBookLimit());
+        System.out.println("-->" + getName() + "<--");
+        System.out.println("Role: " + getRole());
+        System.out.println("Type: " + getType());
+        System.out.println("Date of Membership: " + getDateOfMembership());
+        System.out.println("My Address: " + getAddress());
+        System.out.println("My Phone: " + getPhoneNo());
+        System.out.println("My Issued Book Number: " + getNoBooksIssued());
         System.out.println("--> Books <--");
         int i = 1;
-        for(Book book : getBooks().values()){
-            System.out.println(i++ +". "+book.getName());
+        for (Book book : getBooks().values()) {
+            System.out.println(i++ + ". " + book.getName() + " --> Due Date: " + book.getFinalDeliveryDate().getMonth() + " " + book.getFinalDeliveryDate().getDayOfMonth());
         }
     }
 }
