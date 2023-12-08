@@ -1,11 +1,15 @@
 package com.workintech.app.library.model.Books;
 
-import com.workintech.app.library.Enums.Status;
+import com.workintech.app.library.enums.Status;
 import com.workintech.app.library.model.Person.Person;
+
+import java.text.Collator;
 import java.time.LocalDate;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 
-public abstract class Book {
+public abstract class Book implements Comparable<Book> {
     private final UUID ID;
     private String author;
     private String name;
@@ -123,6 +127,10 @@ public abstract class Book {
         this.owner = owner;
     }
 
+    public void changeOwner(Person owner) {
+        setOwner(owner);
+    }
+
     public void updateStatus(Status status) {
         setStatus(status);
     }
@@ -138,6 +146,24 @@ public abstract class Book {
                         "\nStatus: " + getStatus()
         );
     }
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(ID, book.ID);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID);
+    }
+    @Override
+    public int compareTo(Book book) {
+        Collator collator = Collator.getInstance(new Locale("tr", "TR"));
+        int nameComparison = collator.compare(this.name, book.name);
+        if(nameComparison == 0){
+            return collator.compare(author,book.author);
+        }
+        return nameComparison;
+    }
 }
