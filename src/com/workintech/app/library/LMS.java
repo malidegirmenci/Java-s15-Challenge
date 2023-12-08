@@ -1,6 +1,7 @@
 package com.workintech.app.library;
 
 import com.workintech.app.library.enums.Members;
+import com.workintech.app.library.enums.Status;
 import com.workintech.app.library.model.books.*;
 import com.workintech.app.library.model.library.*;
 import com.workintech.app.library.model.person.*;
@@ -193,17 +194,25 @@ public class LMS {
         library.showBooks("Novel");
 
         /*SHOW BILLS*/
+        System.out.println("**********************************************");
         library.showBills();
 
         /*SHOW READERS*/
+        System.out.println("**********************************************");
         library.showReaders();
 
+        /*EDIT READER*/
+        librarian.editReader(mali,"Mahmut Ali","10.10.2020","BURSA","31231213",Members.STUDENT.name());
+        mali.showPerson();
+
+
+        /*EDIT BOOK*/
+        librarian.editBook(nutuk,"M. K. Ataturk","Nutuk",1923,"1933",120,"Kıymetli Kitap");
+        nutuk.display();
+
         /*RETURN BOOK*/
+        System.out.println("**********************************************");
+        librarian.checkDamaged(nutuk, Status.DAMAGED);
         librarian.returnBook(mali,nutuk);
-
-
-
-
-
     }
 }
