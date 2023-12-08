@@ -106,14 +106,14 @@ public abstract class Reader extends Person implements Borrowable {
 
     @Override
     public void showPerson() {
-        System.out.println("-->" + getName() + "<--");
-        System.out.println("Role: " + getRole());
-        System.out.println("Type: " + getType());
-        System.out.println("Date of Membership: " + getDateOfMembership());
-        System.out.println("My Address: " + getAddress());
-        System.out.println("My Phone: " + getPhoneNo());
-        System.out.println("My Issued Book Number: " + getNoBooksIssued());
-        System.out.println("--> Books <--");
+        System.out.println("-->" + getName() + "<--" +
+        "\nRole: " + getRole() +
+        "\nType: " + getType() +
+        "\nDate of Membership: " + getDateOfMembership() +
+        "\nMy Address: " + getAddress() +
+        "\nMy Phone: " + getPhoneNo() +
+        "\nMy Issued Book Number: " + getNoBooksIssued() +
+        "\n--> Books <--");
         int i = 1;
         for (Book book : getBooks().values()) {
             System.out.println(i++ + ". " + book.getName() + " --> Due Date: " + book.getFinalDeliveryDate().getMonth() + " " + book.getFinalDeliveryDate().getDayOfMonth());
