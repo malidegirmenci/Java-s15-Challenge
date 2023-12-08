@@ -7,6 +7,7 @@ import com.workintech.app.library.model.person.*;
 
 public class LMS {
     public static void main(String[] args) {
+
         /* BOOK INSTANCES */
         Book nutuk = new StudyBook(
                 "Mustafa Kemal Atatürk",
@@ -101,7 +102,7 @@ public class LMS {
         /* LIBRARY INSTANCE*/
         Library library = new Library();
 
-        /* ADDED NEW BOOK */
+        /* ADDED NEW BOOK  */
         library.newBook(nutuk);
         library.newBook(sekerPortakali);
         library.newBook(popSciTR);
@@ -116,6 +117,8 @@ public class LMS {
 
         /* LIBRARIAN INSTANCE */
         Librarian librarian = new Librarian("Server Server", "1231231", library);
+
+
 
         /* AUTHOR INSTANCE */
         Person ataturk = new Author("Mustafa Kemal Atatürk");
@@ -145,13 +148,14 @@ public class LMS {
         Reader ramazan = new Faculty("Ramazan Öztürk", "12.10.2019", "Aydın", "05425214321");
         Reader hasan = new Faculty("Hasan Eker", "03.05.2016", "Aydın", "05325214321");
         Reader fatih = new Student("Fatih Kot","10.07.2023","Trabzon","05052134651");
-
+        Reader mali2 = new Student("Mehmet Ali Değirmenci", "10.05.2021", "Adana", "05465214321");
 
         /* READERS REGISTERED TO LIBRARY */
         library.registerReader(hasan);
         library.registerReader(ramazan);
         library.registerReader(mali);
         library.registerReader(fatih);
+        library.registerReader(mali2);
 
         librarian.issueBook(mali,nutuk,"01.11.2023");
         librarian.issueBook(fatih,popSciTR,"05.12.2023");
@@ -169,9 +173,11 @@ public class LMS {
 
         library.showBook(imhotep);
         mali.showPerson();
-        librarian.editReader(mali,"Mahmut Ali","11.11.2011","Bursa","05123123", Members.STUDENT.name());
         System.out.println("********************************");
         library.showBooks();
         library.showBills();
+        library.showBooks("Novel");
+        library.showReaders();
+
     }
 }

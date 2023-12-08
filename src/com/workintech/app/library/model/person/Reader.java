@@ -3,6 +3,7 @@ package com.workintech.app.library.model.person;
 import com.workintech.app.library.enums.Roles;
 import com.workintech.app.library.interfaces.Borrowable;
 import com.workintech.app.library.model.books.Book;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -108,7 +109,7 @@ public abstract class Reader extends Person implements Borrowable {
                 "\nDate of Membership: " + getDateOfMembership() +
                 "\nMy Address: " + getAddress() +
                 "\nMy Phone: " + getPhoneNo() +
-                "\nMy Issued Book Number: " + getNoBooksIssued() +
+                "\nMy Issued Book Number: " + Math.abs(getNoBooksIssued()) +
                 "\n--> Books <--");
         int i = 1;
         for (Book book : getBooks().values()) {

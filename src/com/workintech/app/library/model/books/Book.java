@@ -22,6 +22,7 @@ public abstract class Book implements Comparable<Book> {
     private LocalDate deadline;
     private String summary;
     private Person owner;
+    private String type;
 
 
     public Book(String author, String name, double price, String releaseYear, int pages, String summary) {
@@ -33,6 +34,15 @@ public abstract class Book implements Comparable<Book> {
         this.releaseYear = releaseYear;
         this.pages = pages;
         this.summary = summary;
+        this.type = getClass().getSimpleName();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public UUID getID() {
@@ -139,6 +149,7 @@ public abstract class Book implements Comparable<Book> {
         System.out.println("--> " + getName() + " <--");
         System.out.println(
                 "Author : " + getAuthor() +
+                        "\nCategory: "+ getType() +
                         "\nRelease Year: " + getReleaseYear() +
                         "\nPages: " + getPages() +
                         "\nSummary: " + getSummary() +

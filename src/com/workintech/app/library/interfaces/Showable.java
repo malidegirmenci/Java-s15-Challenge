@@ -7,5 +7,5 @@ public interface Showable {
     void showReader(Reader reader);
     void showBook(Book book);
     void showBooks();
-    void showMembers();
+    void showReaders();
 }

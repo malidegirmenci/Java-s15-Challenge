@@ -43,7 +43,6 @@ public class Library implements Showable, Removable {
     @Override
     public void removeBook(@NotNull Book book){this.books.remove(book.getID());}
 
-
     @Override
     public void showBooks() {
         Set<Book> books = new TreeSet<>(this.books.values());
@@ -54,12 +53,22 @@ public class Library implements Showable, Removable {
             }
         }
     }
+    public void showBooks(String type){
+        List<Book> books = new LinkedList<>(this.books.values());
+        for(Book book:books){
+            if(book.getType().equals(type)){
+                book.display();
+            }
+        }
+    }
     @Override
-    public void showMembers() {
-        for (Reader reader : readers.values()) {
+    public void showReaders() {
+        System.out.println("-->READERS<--");
+        for(Reader reader: readers.values()){
             reader.showPerson();
         }
     }
+
     @Override
     public void showReader(@NotNull Reader reader) {
         reader.showPerson();
@@ -71,6 +80,7 @@ public class Library implements Showable, Removable {
     }
 
     public void showBills() {
+        System.out.println("-->Bills<--");
         Set<Bill> bills = new TreeSet<>(this.bills.values());
         for(Bill bill: bills){
             System.out.println(bill);
