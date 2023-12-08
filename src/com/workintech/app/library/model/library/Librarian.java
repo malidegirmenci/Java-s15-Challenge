@@ -176,7 +176,7 @@ public class Librarian implements Editable {
 
     @Override
     public void editBook(@NotNull Book book, String author, String name, double price, String releaseYear, int pages, String summary) {
-        if (searchBook(book.getName())) {
+        if (searchBook(book.getID())) {
             book.setAuthor(author);
             book.setName(name);
             book.setPrice(price);
