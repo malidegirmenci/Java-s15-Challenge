@@ -6,6 +6,7 @@ import com.workintech.app.library.model.person.Reader;
 public interface Showable {
     void showReader(Reader reader);
     void showBook(Book book);
+    void showBooks(String type);
     void showBooks();
     void showReaders();
 }

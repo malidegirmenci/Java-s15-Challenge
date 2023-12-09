@@ -214,5 +214,7 @@ public class LMS {
         System.out.println("**********************************************");
         librarian.checkDamaged(nutuk, Status.DAMAGED);
         librarian.returnBook(mali,nutuk);
+
+        
     }
 }

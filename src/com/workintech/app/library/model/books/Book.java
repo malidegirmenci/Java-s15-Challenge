@@ -37,14 +37,6 @@ public abstract class Book implements Comparable<Book> {
         this.type = getClass().getSimpleName();
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public UUID getID() {
         return ID;
     }
@@ -55,14 +47,6 @@ public abstract class Book implements Comparable<Book> {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public LocalDate getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(LocalDate deadline) {
-        this.deadline = deadline;
     }
 
     public String getName() {
@@ -121,6 +105,14 @@ public abstract class Book implements Comparable<Book> {
         this.finalDeliveryDate = finalDeliveryDate;
     }
 
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
+
     public String getSummary() {
         return summary;
     }
@@ -137,6 +129,14 @@ public abstract class Book implements Comparable<Book> {
         this.owner = owner;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void changeOwner(Person owner) {
         setOwner(owner);
     }
@@ -149,7 +149,7 @@ public abstract class Book implements Comparable<Book> {
         System.out.println("--> " + getName() + " <--");
         System.out.println(
                 "Author : " + getAuthor() +
-                        "\nCategory: "+ getType() +
+                        "\nCategory: " + getType() +
                         "\nRelease Year: " + getReleaseYear() +
                         "\nPages: " + getPages() +
                         "\nSummary: " + getSummary() +
@@ -157,6 +157,7 @@ public abstract class Book implements Comparable<Book> {
                         "\nStatus: " + getStatus()
         );
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -164,16 +165,18 @@ public abstract class Book implements Comparable<Book> {
         Book book = (Book) o;
         return Objects.equals(ID, book.ID);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(ID);
     }
+
     @Override
     public int compareTo(Book book) {
         Collator collator = Collator.getInstance(new Locale("tr", "TR"));
         int nameComparison = collator.compare(this.name, book.name);
-        if(nameComparison == 0){
-            return collator.compare(author,book.author);
+        if (nameComparison == 0) {
+            return collator.compare(author, book.author);
         }
         return nameComparison;
     }
